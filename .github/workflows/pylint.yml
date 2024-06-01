@@ -20,4 +20,4 @@ jobs:
       uses: ndeloof/install-compose-action@v0.0.1
       with:
         legacy: false    # will also install in PATH as `docker-compose`
-    - run: docker compose -f docker-compose.tests.yml up
+    - run: ls -la && docker compose -f docker-compose.tests.yml up
