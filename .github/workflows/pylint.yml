@@ -35,7 +35,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y docker-compose
 
     - name: Create .env file
-      run: cp .env.example .env
+      run: cp .env .env
 
     - name: Build and run containers
       run: docker-compose up --build -d
@@ -48,7 +48,7 @@ jobs:
         done
 
     - name: Run Django tests
-      run: docker-compose run test-django
+      run: docker-compose -f docker-compose.tests.yml up
 
     - name: Stop and remove containers
       run: docker-compose down
