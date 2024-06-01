@@ -19,5 +19,5 @@ jobs:
     - name: Install Compose
       uses: ndeloof/install-compose-action@v0.0.1
       with:
-        legacy: false    # will also install in PATH as `docker-compose`
-    - run: ls -la && docker compose -f docker-compose.tests.yml up
+        legacy: false
+    - run: docker compose --env-file .env.tests -f docker-compose.tests.yml up --exit-code-from test-django
