@@ -46,4 +46,4 @@ class PostgresSchemaRunner(DiscoverRunner):
         for conn_name in connections:
             connection = connections[conn_name]
             connection.prepare_database = MethodType(prepare_db, connection)
-        return super().setup_databases(self, **kwargs)
+        return super().setup_databases(**kwargs)
