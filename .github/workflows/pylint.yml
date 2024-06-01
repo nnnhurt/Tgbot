@@ -16,11 +16,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Docker Compose
-      run: sudo apt-get update && sudo apt-get install -y docker-compose
-
-    - name: Run Django tests
-      run: docker-compose -f docker-compose.tests.yml up
-
-    - name: Stop and remove containers
-      run: docker-compose down
+    - name: Install Compose
+      uses: ndeloof/install-compose-action@v0.0.1
+      with:
+        legacy: false    # will also install in PATH as `docker-compose`
+    - run: docker compose -f docker-compose.tests.yml up
