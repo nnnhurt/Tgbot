@@ -1,0 +1,12 @@
+[tool.coverage.run]
+omit = [
+    "manage.py",
+    "tgbot/asgi.py",
+    "tgbot/wsgi.py"
+]
+[tool.isort]
+py_version = 310
+skip = ['*/migrations', '.git', '.github', '__pycache__', '*/migrations/', 'venv/']
+known_first_party = ['app', 'Bot']
+lines_after_imports = 2
+skip_glob = '*/migrations'
