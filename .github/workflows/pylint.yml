@@ -12,37 +12,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15.5
-        env:
-          POSTGRES_USER: your_db_user
-          POSTGRES_PASSWORD: your_db_password
-          POSTGRES_DB: your_db_name
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Set up Docker Compose
-      run: sudo apt-get update && sudo apt-get install -y docker-compose
-      
-    - name: Wait for PostgreSQL
-      run: |
-        until docker-compose exec test-db pg_isready -U your_db_user -d your_db_name; do
-          echo "Waiting for postgres..."
-          sleep 1
-        done
+      run: sudo apt-get update && sudo apt-get install -y docker-compose-plugin
 
     - name: Run Django tests
-      run: docker-compose -f docker-compose.tests.yml up
+      run: docker compose -f docker-compose.tests.yml up
 
     - name: Stop and remove containers
-      run: docker-compose down
+      run: docker compose down
