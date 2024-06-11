@@ -19,7 +19,9 @@ services:
     command: sh -c "
       python3 manage.py migrate
       && python3 manage.py loaddata -i ./fixture.json
-      && python3 manage.py test tests"
+      && pip install coverage 
+      && coverage run --source=\".\" ./manage.py test tests
+      && coverage report -m"
     env_file: ./tgbot/.env
     ports:
       - "8000:8000"

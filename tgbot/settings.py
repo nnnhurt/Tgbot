@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = getenv('DEBUG')
 SECRET_KEY = getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['host.docker.internal']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
