@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  test:
+  linter:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,13 @@ jobs:
       run: | 
         python3 -m pip install flake8
         flake8 . 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
       
 
     - name: Install Compose
