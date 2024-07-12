@@ -6,3 +6,4 @@ WORKDIR /app
 COPY requirements-bot.txt requirements-bot.txt
 
 RUN pip install -r requirements-bot.txt
+RUN pip install aiohttp-socks
