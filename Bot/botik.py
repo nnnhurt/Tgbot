@@ -53,6 +53,7 @@ async def send_initial_buttons(message_or_callback):
         headers=headers,
         timeout=1,
     )
+    logging.info(response)
     if response.status_code == 200:
         buttons_data = response.json()
         for button in buttons_data:
@@ -96,6 +97,7 @@ async def handle_button(callback: types.CallbackQuery):
         headers=headers,
         timeout=1,
     )
+    logging.info(response)
     if response.status_code != 200:
         await callback.message.answer('Не удалось получить список кнопок.')
         return
