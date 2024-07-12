@@ -9,11 +9,14 @@ from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters.command import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from dotenv import load_dotenv
+from aiogram import Bot
+from aiogram.client.session.aiohttp import AiohttpSession
 
+session = AiohttpSession(proxy="http://10.8.94.101:3128")
 
 load_dotenv()
 USER_TOKEN = getenv('USER_TOKEN')
-bot = Bot(token=getenv('BOT_TOKEN'))
+bot = Bot(token=getenv('BOT_TOKEN'), session=session)
 dp = Dispatcher()
 headers = {
     'User-Agent': 'Bot User Agent',
